@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Bootcamp;
+//use Illuminate\Support\Facades\Validator;
+use App\Http\Requests\StoreBootcampRequest;
 
 class BootcampController extends Controller
 {
@@ -13,7 +16,10 @@ class BootcampController extends Controller
      */
     public function index()
     {
-       echo "mostrar los bootcamps";
+        //metodo json: tramiste response en formato json
+        //  parametros: datos a trasmitir
+        //              codigo http del response
+        return response()->json(["success" => true , "data" => Bootcamp::all()],200);
     }
 
     /**
@@ -22,9 +28,41 @@ class BootcampController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreBootcampRequest $request)
     {
-        echo "registrar un nuevo bootcamp";
+        /*1.reglas de validacion 
+            $reglas = [
+                "name" => "required"
+            ];
+            //2.crear el obeto validador
+            $v = Validator::make($request->all(),$reglas);
+            //3.validar
+            if($v->fails()){
+                //4.si la validacion falla
+                return response()->json(
+                    [
+                        "success" => false,
+                        "error" => $v->errors()
+                    ],404
+                );
+            }
+        //crear el nuevo Bootcamp
+            /*manera 1
+            $newBootcamp = new Bootcamp;
+            $newBootcamp->name = $request->name;
+            $newBootcamp->description = $request->description;
+            $newBootcamp->website = $request->website;
+            $newBootcamp->phone = $request->phone;
+            $newBootcamp->user_id = $request->user_id;
+            $newBootcamp->average_rating = $request->average_rating;
+            $newBootcamp->average_cost = $request->average_cost;
+            $newBootcamp->save();
+            return $newBootcamp;*/
+            /*manera 2
+            return Bootcamp::create($request->all());
+            *///MANERA 3
+        return response()->json(["success" => true , "data" =>  Bootcamp::create($request->all()) ],201);
+        
     }
 
     /**
@@ -35,7 +73,7 @@ class BootcampController extends Controller
      */
     public function show($id)
     {
-        echo "mostrar un bootcamp especifico cuyo id sea $id";
+        return response()->json(["success" => true , "data" => Bootcamp::find($id)],200);
     }
 
     /**
@@ -47,7 +85,9 @@ class BootcampController extends Controller
      */
     public function update(Request $request, $id)
     {
-       echo "actualizar un bootcamp cuyo id es: $id";
+        $b = Bootcamp::find($id);
+        $b->update($request->all());
+        return response()->json(["success" => true , "data" => $b],200);
     }
 
     /**
@@ -58,6 +98,8 @@ class BootcampController extends Controller
      */
     public function destroy($id)
     {
-        echo "eliminar un bootcamp con id $id";
+        $b = Bootcamp::find($id);
+        $b->delete();
+        return response()->json(["success" => true , "data" => $b],200);
     }
 }
