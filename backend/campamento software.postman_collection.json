@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "330c0b0b-018d-41e2-a74e-c2250c629b53",
+		"_postman_id": "ad6889a2-78c2-4d13-97a9-56ac190014c0",
 		"name": "campamento software",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -60,7 +60,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\" : \"prueba de insersion\",\r\n    \"description\" : \"Data Science for beginners\",\r\n    \"website\" : \"python.org/ds\",\r\n    \"phone\" : \"(555)-55555\",\r\n    \"user_id\" : 1,\r\n    \"average_rating\" : 4.5,\r\n    \"average_cost\" : 2000    \r\n}"
+							"raw": "{\r\n    \"name\" : \"Kevin prueba de insersion\",\r\n    \"description\" : \"Data Science for beginners\",\r\n    \"website\" : \"python.org\",\r\n    \"phone\" : \"(555)-55555\",\r\n    \"user_id\" : 1,\r\n    \"average_rating\" : 4.5,\r\n    \"average_cost\" : 2000 \r\n}"
 						},
 						"url": {
 							"raw": "localhost:8000/api/bootcamps",
@@ -201,9 +201,71 @@
 					"name": "traer todos los courses",
 					"request": {
 						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "aplication/json",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "localhost:8000/api/courses",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"courses"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "optener course por id",
+					"request": {
+						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": ""
+							"raw": "localhost:8000/api/courses/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"courses",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Request",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"prueba\",\r\n    \"description\": \"prueba\",\r\n    \"weeks\": \"11\",\r\n    \"enroll_cost\": \"1.00\",\r\n    \"minium_skill\": \"asdsa\",\r\n    \"bootcamp_id\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/api/courses",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"courses"
+							]
 						}
 					},
 					"response": []
