@@ -3,6 +3,8 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BootcampController;
+use App\Http\Controllers\CourseController;
+use App\Http\Controllers\ReviewController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,3 +27,9 @@ Route::get('prueba', function(){
 
 //ruta rest para el cambio de estados de los bootcamps
 Route::apiResource('bootcamps', BootcampController::class);
+
+//ruta rest para el cambio de estados de los course
+Route::apiResource('courses', CourseController::class);
+
+//ruta rest para el cambio de estados de los courser
+Route::apiResource('reviews', ReviewController::class);

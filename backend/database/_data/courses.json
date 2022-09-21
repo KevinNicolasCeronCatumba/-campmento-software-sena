@@ -1,5 +1,18 @@
 [
     {
-        
+        "tittle" : "prueba",
+        "weeks" : "2",
+        "description" : "Bootcamp fot PHP learning",
+        "bootcamp_id" : 1,
+        "enroll_cost" : 4.5,
+        "minium_skill" : 50000
+    },
+    {
+        "tittle" : "C++ Intermediate Level",
+        "weeks" : "2",
+        "description" : "Bootcamp fot PHP learning",
+        "bootcamp_id" : 1,
+        "enroll_cost" : 4.5,
+        "minium_skill" : 50000
     }
 ]
